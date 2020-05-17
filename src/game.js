@@ -672,7 +672,7 @@ class GalleryScene extends util.Entity {
   }
 
   updateDoneButton() {
-    document.getElementById("done-selection").disabled = this.selectedIndexes.length != 5;
+    document.getElementById("done-selection").disabled = this.selectedIndexes.length == 0;
   }
 
   changePage(newPageNumber) {
