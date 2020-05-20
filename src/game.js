@@ -128,7 +128,7 @@ class IntroScene extends util.Entity {
     document.getElementById("intro-gui").style.display = "block";
 
     document.getElementById("user-provided-id").addEventListener("keyup", this.onSetUserProvidedId.bind(this));
-    document.getElementById("user-provided-name").addEventListener("keyup", this.onSetUserProvidedId.bind(this));
+//    document.getElementById("user-provided-name").addEventListener("keyup", this.onSetUserProvidedId.bind(this));
 
     this.done = false;
     document.getElementById("done-intro").disabled = true;
@@ -142,7 +142,7 @@ class IntroScene extends util.Entity {
   requestedTransition(timeSinceStart) { return this.done ? "next" : null; }
 
   onSetUserProvidedId(e) {
-    document.getElementById("done-intro").disabled = (document.getElementById("user-provided-id").value.length === 0 || document.getElementById("user-provided-name").value.length === 0);
+    document.getElementById("done-intro").disabled = (document.getElementById("user-provided-id").value.length === 0);
 
     // If enter key pressed
     if(e.keyCode === 13 && !document.getElementById("done-intro").disabled) {
@@ -154,7 +154,7 @@ class IntroScene extends util.Entity {
     playerData.customData.userProvidedId = document.getElementById("user-provided-id").value;
     redmetricsConnection.updatePlayer(playerData);
 
-    document.getElementById("name-given-message").innerHTML = document.getElementById("user-provided-name").value;
+    //document.getElementById("name-given-message").innerHTML = document.getElementById("user-provided-name").value;
 
     this.done = true;
   }
@@ -172,7 +172,7 @@ class TrainingScene extends util.Entity {
     this.blockScene.preventAddingShape = true;
     document.getElementById("add-shape").style.display = "none";
     document.getElementById("done-adding").style.display = "none";
-    document.getElementById("name-given-message").style.display = "none";
+//    document.getElementById("name-given-message").style.display = "none";
 
     this.blockScene.on("droppedBlock", this.onDroppedBlock, this);
     this.blockScene.on("addedShape", this.onAddedShape, this);
@@ -288,7 +288,7 @@ class BlockScene extends util.Entity {
 
     // HTML
     document.getElementById("blocks-gui").style.display = "block";
-    document.getElementById("name-given-message").style.display = "block";
+//    document.getElementById("name-given-message").style.display = "block";
 
     // This is dumb, but required so that removeEventListener works correctly with bind()
     this.onAddShape = this.onAddShape.bind(this);
